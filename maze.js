@@ -13,12 +13,13 @@ window.onload=function(){
 	document.getElementById("start").addEventListener("click",restart);
 	document.getElementById("end").addEventListener("mouseover",loser);
 	
-	for (var i=0; i<borders.length;i++){
+	for (var i=0; i<borders.length-1;i++){
 		borders[i].onmouseover=function(){
 				var borders=document.querySelectorAll("div.boundary");
 				for (var i=0; i<borders.length-1;i++){
 					borders[i].className="boundary youlose";
 					end=true;
+					loser();
 					};
 			};
 		};
@@ -29,16 +30,17 @@ function loser()
 {
 	if(end)
 	{
-		alert("You lose");
+		document.getElementById("status").textContent = "You lose!";
 	}
 	else
 	{
-		alert("You win!");
+		document.getElementById("status").textContent = "You won!";
 	}
-} 	
+}
 
 function restart()
 {
+	document.getElementById("status").textContent = "Move your mouse over the \"S\" to begin.";
 	var borders=document.querySelectorAll("div.boundary");
 	for (var i=0;i<borders.length;i++)
 	{
